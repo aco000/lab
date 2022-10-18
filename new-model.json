@@ -1,0 +1,501 @@
+{
+  "summary": {
+    "title": "Demo Threat Model",
+    "owner": "Mike Goodwin",
+    "description": "A sample model of a web application, with a queue-decoupled background process.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Tom Brown",
+        "$$hashKey": "object:11"
+      },
+      {
+        "name": "Albert Moneypenny",
+        "$$hashKey": "object:12"
+      }
+    ],
+    "diagrams": [
+      {
+        "title": "Main Request Data Flow",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "id": 0,
+        "diagramJson": {
+          "cells": [
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 290,
+                "y": 420
+              },
+              "angle": 0,
+              "id": "936557f9-22e2-4bac-bb70-0089c5c2fbe1",
+              "z": 2,
+              "isALog": true,
+              "threats": [
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "description": "An attacker could make an query call on the DB,",
+                  "title": "Unauthorised access",
+                  "type": "Information disclosure",
+                  "mitigation": "Require all queries to be authenticated.",
+                  "$$hashKey": "object:103"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "An attacker could obtain the DB credentials ans use them to make unauthorised queries.",
+                  "title": "Credential theft",
+                  "type": "Information disclosure",
+                  "mitigation": "Use a firewall to restrict access to the DB to only the Background Worker IP address.",
+                  "$$hashKey": "object:104"
+                }
+              ],
+              "outOfScope": false,
+              "hasOpenThreats": true,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "DynamoDB"
+                },
+                "#element-shape": {
+                  "class": ""
+                },
+                ".undefined": {
+                  "class": "undefinedhasOpenThreats isInScope"
+                },
+                ".element-text": {
+                  "class": "element-text hasOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 210,
+                "y": 180
+              },
+              "angle": 0,
+              "id": "0d9909ea-1398-4898-be81-cf1c808324dc",
+              "z": 6,
+              "privilegeLevel": "executionContext =Limited",
+              "outOfScope": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "ruleId": "c1377855-ea20-4c97-8861-f95c364fb8d2",
+                  "title": "Generic elevation threat",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic elevation threat",
+                  "$$hashKey": "object:162"
+                },
+                {
+                  "ruleId": "b2a6d40d-d3f8-4750-8e4d-c02cc84b13dc",
+                  "title": "Generic spoofing threat",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic spoofing threat",
+                  "$$hashKey": "object:163"
+                },
+                {
+                  "ruleId": "4adaa48a-0345-4533-a189-64c98c4420dd",
+                  "title": "Generic tampering threat",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic tampering threat",
+                  "$$hashKey": "object:164"
+                },
+                {
+                  "ruleId": "87bc37e2-798e-4d68-bb96-feb1da26da48",
+                  "title": "Generic repudiation threat",
+                  "type": "Repudiation",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic repudiation threat",
+                  "$$hashKey": "object:165"
+                },
+                {
+                  "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
+                  "title": "Generic information disclosure threat",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic information disclosure threat",
+                  "$$hashKey": "object:166"
+                },
+                {
+                  "ruleId": "edb05d76-a695-455f-947b-7d67b78bc31d",
+                  "title": "Generic DoS threat",
+                  "type": "Denial of service",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic DoS threat",
+                  "$$hashKey": "object:167"
+                }
+              ],
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Web API"
+                },
+                "#element-process": {
+                  "class": "outOfScopeElement"
+                },
+                ".undefined": {
+                  "class": "undefinedhasNoOpenThreats isInScope"
+                },
+                ".element-text": {
+                  "class": "element-text hasOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 40,
+                "y": 29
+              },
+              "angle": 0,
+              "id": "b394f9f7-07ca-42bc-b616-ad77c6fbfcce",
+              "z": 7,
+              "threats": [
+                {
+                  "ruleId": "b2a6d40d-d3f8-4750-8e4d-c02cc84b13dc",
+                  "title": "Unencrypted HTTP requests instead of TLS from client",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "description": "Unencrypted HTTP requests instead of TLS from client",
+                  "$$hashKey": "object:137"
+                },
+                {
+                  "ruleId": "87bc37e2-798e-4d68-bb96-feb1da26da48",
+                  "title": "Generic repudiation threat",
+                  "type": "Repudiation",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Low",
+                  "description": "A generic repudiation threat",
+                  "mitigation": "Use of TLS and an API ket authentication system",
+                  "$$hashKey": "object:146"
+                }
+              ],
+              "outOfScope": false,
+              "hasOpenThreats": true,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Browser"
+                },
+                "#element-shape": {
+                  "class": ""
+                },
+                ".undefined": {
+                  "class": "undefinedhasNoOpenThreats isInScope"
+                },
+                ".element-text": {
+                  "class": "element-text hasOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 120,
+                "y": 230
+              },
+              "target": {
+                "x": 300,
+                "y": 150
+              },
+              "vertices": [
+                {
+                  "x": 177,
+                  "y": 149
+                }
+              ],
+              "id": "64d52ab0-9733-4ae9-af1b-a347cbc13186",
+              "z": 8,
+              "attrs": {}
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "b394f9f7-07ca-42bc-b616-ad77c6fbfcce"
+              },
+              "target": {
+                "id": "0d9909ea-1398-4898-be81-cf1c808324dc"
+              },
+              "vertices": [
+                {
+                  "x": 245,
+                  "y": 112
+                }
+              ],
+              "id": "56b56e8c-751d-4d8a-a9c7-6554c9f142ee",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Web Request",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 10,
+              "threats": [
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "title": "Data flow should use HTTP/S",
+                  "type": "Information disclosure",
+                  "description": "These requests are made over the public internet and could be intercepted by an attacker.",
+                  "mitigation": "The requests should require HTTP/S. This will provide confidentiality and integrity. HTTP should not be supported."
+                }
+              ],
+              "isPublicNetwork": true,
+              "isEncrypted": true,
+              "protocol": "HTTP/S",
+              "outOfScope": false,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 250,
+                "y": 380
+              },
+              "target": {
+                "x": 510,
+                "y": 450
+              },
+              "vertices": [
+                {
+                  "x": 333,
+                  "y": 288
+                },
+                {
+                  "x": 475,
+                  "y": 276
+                }
+              ],
+              "id": "a61cbe16-7e3f-400c-a0ea-c0695253c6ad",
+              "z": 18,
+              "attrs": {}
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "0d9909ea-1398-4898-be81-cf1c808324dc"
+              },
+              "target": {
+                "id": "b394f9f7-07ca-42bc-b616-ad77c6fbfcce"
+              },
+              "vertices": [
+                {
+                  "x": 111,
+                  "y": 175
+                }
+              ],
+              "id": "1b1cf1eb-d9ac-463b-a9ae-d816c42e7107",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Web Response",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 19,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTP/S",
+              "threats": [
+                {
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "title": "Data flow should use HTTP/S",
+                  "type": "Information disclosure",
+                  "description": "These responses are over the public internet and could be intercepted by an attacker.",
+                  "mitigation": "The requests should require HTTP/S. This will provide confidentiality and integrity. HTTP should not be supported."
+                }
+              ],
+              "outOfScope": false,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "0d9909ea-1398-4898-be81-cf1c808324dc"
+              },
+              "target": {
+                "id": "936557f9-22e2-4bac-bb70-0089c5c2fbe1"
+              },
+              "vertices": [
+                {
+                  "x": 311,
+                  "y": 324
+                }
+              ],
+              "id": "2fd00bd2-c603-4d72-a12f-c20a3a1ba77b",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Queries",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 22,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "936557f9-22e2-4bac-bb70-0089c5c2fbe1"
+              },
+              "target": {
+                "id": "0d9909ea-1398-4898-be81-cf1c808324dc"
+              },
+              "vertices": [
+                {
+                  "x": 377,
+                  "y": 280
+                }
+              ],
+              "id": "d117ddba-2508-45ce-b9ea-fb9df56a79e5",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Web App Query\nResults",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 23,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            }
+          ]
+        },
+        "size": {
+          "height": 594,
+          "width": 860
+        },
+        "$$hashKey": "object:15",
+        "diagramType": "STRIDE"
+      }
+    ],
+    "reviewer": "Jane Smith"
+  }
+}
